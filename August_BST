@@ -1,0 +1,27 @@
+1. Validate Binary Search Tree >- 
+Approach 1..>- Perform inorder traversal on bst and store  the elements in list and then check if list is sorted then the bst is valid otherwise invalid.
+class Solution {
+    public void inorder(TreeNode root, ArrayList<Integer> lst) {
+        if (root == null)
+            return;
+
+        inorder(root.left, lst);
+        lst.add(root.val);
+        inorder(root.right, lst);
+    }
+
+    public boolean isValidBST(TreeNode root) {
+
+        ArrayList<Integer> lst = new ArrayList<>();
+        inorder(root, lst);
+
+        for (int i = 1; i < lst.size(); i++) {
+            if (lst.get(i) <= lst.get(i - 1)) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
