@@ -59,3 +59,38 @@ class Solution {
     }
 }
 ------------------------------------------------------------------------------------------------------------------------------------------------
+3. Insert into BST >- (ITERATIVE APPROACH ) 
+ Node current = root ; 
+        if(root==null){
+            root = new Node(key);
+            return root ; 
+        }
+        
+        while(true){
+            if(key<current.data){
+                if(current.left==null){
+                    current.left = new Node(key);
+                    break ;
+                }
+                else{
+                    current = current.left ; 
+                }
+            }
+            else if(current.data<key){
+                if(current.right==null){
+                    current.right = new Node(key);
+                    break ;
+                }
+                else{
+                    current = current.right ;
+                    
+                }
+            }
+            else{
+                return root ;
+            }
+        }
+        
+        return root ;
+
+------------------------------------------------------------------------------------------------------------------------------------------------
