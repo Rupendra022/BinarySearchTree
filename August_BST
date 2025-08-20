@@ -94,3 +94,31 @@ class Solution {
         return root ;
 
 ------------------------------------------------------------------------------------------------------------------------------------------------
+4. Kth Smallest in BST >- 
+class Solution {
+    static int ans;
+    static int count;
+
+    public void inorder(TreeNode root, int k) {
+        if (root == null) {
+            return;
+        }
+
+        inorder(root.left, k);
+        count++;
+        if (count == k) {
+            ans = root.val;
+            return;
+        }
+        inorder(root.right, k);
+
+    }
+
+    public int kthSmallest(TreeNode root, int k) {
+        count = 0;
+        ans = 0;
+        inorder(root, k);
+        return ans;
+    }
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------
