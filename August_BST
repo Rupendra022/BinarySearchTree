@@ -122,3 +122,34 @@ class Solution {
     }
 }
 -----------------------------------------------------------------------------------------------------------------------------------------------
+5. Range sum in BST >- 
+class Solution {
+    static int sum;
+    
+    public void inOrder(TreeNode root, int l, int h) {
+        if (root == null) return;
+
+        // go left only if needed
+        if (root.val > l) {
+            inOrder(root.left, l, h);
+        }
+
+        // add if in range
+        if (root.val >= l && root.val <= h) {
+            sum += root.val;
+        }
+
+        // go right only if needed
+        if (root.val < h) {
+            inOrder(root.right, l, h);
+        }
+    }
+
+    public int rangeSumBST(TreeNode root, int low, int high) {
+        sum = 0;
+        inOrder(root, low, high);
+        return sum;
+    }
+}
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
